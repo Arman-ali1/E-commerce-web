@@ -39,7 +39,7 @@ export default function Register (){
         e.preventDefault()
         try{
             console.log("Start submitting22 ");
-            await axios.post("http://localhost:8000/register",{
+            await axios.post("http://localhost:3300/register",{
                 email,password,repeatPassword,firstName,lastName,phone,company
             }).then(res=>{
                 console.log(res.data);

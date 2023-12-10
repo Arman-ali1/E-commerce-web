@@ -23,6 +23,10 @@ app.get("/",cors(),(req,res)=>{
 
 })
 
+app.get("/",(req,res)=>{
+    res.send("home");
+})
+
 app.post("/sendData", async(req,res)=>{
     const{name} =req.body
     // console.log(req)
@@ -72,7 +76,10 @@ app.get("/userdata",async(req,res)=>{
 
     }
 })
-
-app.listen(8000,()=>{
-    console.log("server start at 8000");
+app.get("/User",(req,res)=>{
+    res.send("hello User");
+})
+const port=3300;
+app.listen(port,()=>{
+    console.log(`server start at port no ${port}`);
 })
