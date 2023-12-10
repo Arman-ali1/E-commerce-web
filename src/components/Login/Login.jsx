@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 export default function Login() {
 
-// const[nam,setName]=useState("Arman")
+const[flage,setFlage]=useState(true)
 
     async function fetchData() {
-        try {
+        try { 
             await axios.get("http://localhost:3300/loginuser")
                 .then(res => {
 
@@ -24,6 +24,9 @@ export default function Login() {
         } catch {
             console.log("something went wront to call api get(LoginUser)");
         }
+
+        setFlage(!flage)
+
     }
 
 function submit() {
@@ -34,8 +37,8 @@ function submit() {
 
 
   return (
-        <>
-            <section className="bg-gray-50 dark:bg-gray-900">
+        <>{
+flage?<section className="bg-gray-50 dark:bg-gray-900">
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
@@ -65,7 +68,7 @@ function submit() {
                       </div>
                       <a href="#" className="text-sm font-medium text-white hover:underline dark:text-primary-500">Forgot password?</a>
                   </div>
-                  <Link to={"/"} onClick={submit} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in
+                  <Link to={"/Login"} onClick={submit} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in
                     </Link>
                   
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
@@ -74,7 +77,56 @@ function submit() {
           </div>
       </div>
                 </div>
-            </section>
+            </section>:
+<div className="bg-white overflow-hidden shadow rounded-lg border">
+    <div className="px-4 py-5 sm:px-6">
+        <h3 className="text-lg leading-6 font-medium text-gray-900">
+            User Profile
+        </h3>
+        <p className="mt-1 max-w-2xl text-sm text-gray-500">
+            This is some information about the user.
+        </p>
+    </div>
+    <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
+        <dl className="sm:divide-y sm:divide-gray-200">
+            <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">
+                    Full name
+                </dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    John Doe
+                </dd>
+            </div>
+            <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">
+                    Email address
+                </dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    johndoe@example.com
+                </dd>
+            </div>
+            <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">
+                    Phone number
+                </dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    (123) 456-7890
+                </dd>
+            </div>
+            <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">
+                    Address
+                </dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    123 Main St<br/>
+                     Anytown, USA 12345
+                </dd>
+            </div>
+        </dl>
+    </div>
+</div>
+        }
+            
             
         </>
   )
