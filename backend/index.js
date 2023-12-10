@@ -20,27 +20,27 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cors());
 app.get("/",cors(),(req,res)=>{
-
-})
-
-app.get("/",(req,res)=>{
     res.send("home");
 })
 
-app.post("/sendData", async(req,res)=>{
-    const{name} =req.body
-    // console.log(req)
-    // console.log(req.body)
-    try{
-        await collection.insertMany([{name:name}])
-        // const allData=await collection.find({})
-        // res.json(allData)
-    }
-    catch{
+// app.get("",(req,res)=>{
+//     res.send("home");
+// })
 
-    }
-})
-console.log("ddddddddddddddddddddddddd");
+// app.post("/sendData", async(req,res)=>{
+//     const{name} =req.body
+//     // console.log(req)
+//     // console.log(req.body)
+//     try{
+//         await collection.insertMany([{name:name}])
+//         // const allData=await collection.find({})
+//         // res.json(allData)
+//     }
+//     catch{
+
+//     }
+// })
+// console.log("ddddddddddddddddddddddddd");
 app.post("/register", async(req,res)=>{
     
     const{email,password,repeatPassword,firstName,lastName,phone,company} =req.body
@@ -55,29 +55,41 @@ app.post("/register", async(req,res)=>{
         console.log("Problem in schema");
     }
 })
-console.log("dddddddddddddddddddddddddend");
-app.get("/getdata",async(req,res)=>{
-    try{
-        const allData=await collection.find({})
-        res.json(allData)
-    }
-    catch{
-        res.json("fail")
+// console.log("dddddddddddddddddddddddddend");
+// app.get("/getdata",async(req,res)=>{
+//     try{
+//         const allData=await collection.find({})
+//         res.json(allData)
+//     }
+//     catch{
+//         res.json("fail")
 
-    }
+//     }
+// })
+// app.get("/userdata",async(req,res)=>{
+//     try{
+//         const allData=await userRegistration.find({})
+//         res.json(allData)
+//     }
+//     catch{
+//         res.json("fail")
+
+//     }
+// })
+app.get("/User",(req,res)=>{
+    res.send("hello User");
 })
-app.get("/userdata",async(req,res)=>{
+app.get("/loginuser",async(req,res)=>{
     try{
         const allData=await userRegistration.find({})
         res.json(allData)
+        // .then(res.allData)
     }
     catch{
-        res.json("fail")
+        res.json("fail fetching data from database")
 
     }
-})
-app.get("/User",(req,res)=>{
-    res.send("hello User");
+
 })
 const port=3300;
 app.listen(port,()=>{

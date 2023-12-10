@@ -64,7 +64,7 @@ export default function Register (){
         <>
             <div className="bg-gray-200 p-6 rounded-lg shadow-md flex justify-center items-center">
                 <div className=" bg-red-500 p-6 rounded-lg w-60 h-20 flex justify-center items-center">
-                    <h1 className="text-4xl font-bold text-blue-700 text-center flex justify-center items-center">Sign Up Page</h1>
+                    <h1 className="text-4xl font-bold text-blue-700 text-center flex justify-center items-center">Sign Up</h1>
                 </div>
             </div>  
             <br></br>
