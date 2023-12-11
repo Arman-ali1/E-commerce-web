@@ -97,15 +97,27 @@ app.get("/loginuser",async(req,res)=>{
 app.post("/loginuserDetail",async(req,res)=>{
     console.log("Req start");
     const{pass,eeem} =req.body
-    console.log(pass);
+    let cnt=1;
+    console.log(`1. `,pass);
     console.log(eeem);
+    
     try{
-        const allData=await userRegistration.find({})
-        res.json(allData)
-        // .then(res.allData)
-    }
+        const allData=await userRegistration.findOne({email:eeem});
+        if(!allData){
+            console.log("user not found");
+            // const message = "user not exists";
+            const datafound=false;
+            res.send(datafound);
+        }
+        else{
+        console.log("reg all data");
+        console.log(allData);
+        res.status(200).json(allData) 
+        // .then(res.allData) 
+        }
+    }  
     catch{
-        res.json("fail fetching data from database")
+        res.json("fail fetching data from database");
 
     }
 

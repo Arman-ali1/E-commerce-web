@@ -63,6 +63,8 @@ export default function Header() {
                                 </NavLink>
                             </li>
                             <li>
+                            </li>
+                            <li>
                                 <NavLink
                                 to="/github"
                                     className={({isActive}) =>
