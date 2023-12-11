@@ -80,6 +80,25 @@ app.get("/User",(req,res)=>{
     res.send("hello User");
 })
 app.get("/loginuser",async(req,res)=>{
+    console.log("Req start");
+    const{pass,eeem} =req.body
+    console.log(pass);
+    try{
+        const allData=await userRegistration.find({})
+        res.json(allData)
+        // .then(res.allData)
+    }
+    catch{
+        res.json("fail fetching data from database")
+
+    }
+
+})
+app.post("/loginuserDetail",async(req,res)=>{
+    console.log("Req start");
+    const{pass,eeem} =req.body
+    console.log(pass);
+    console.log(eeem);
     try{
         const allData=await userRegistration.find({})
         res.json(allData)
